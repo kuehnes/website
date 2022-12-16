@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Impact;
+    margin-left: 42%;
+    margin-right: 40%;
+    margin-top: 10%;
+    background-color: #C5DFFD;
+}
+
+.login-style {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+
+}
+
+.login-border{
+    background-color: white;
+    padding: 40px;
+    border-radius: 8%;
+}
+
+progress::-moz-progress-bar {
+    background-color: green !important;
+}

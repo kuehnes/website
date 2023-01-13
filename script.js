@@ -1,6 +1,6 @@
 // regex patterns for username
 // username pattern: 3 characters + @ + 3 characters + . + 2-3 characters
-const userNamePattern = /^[0-9a-zA-Z]{3}@[0-9a-zA-Z]{3}\.[0-9a-zA-Z]{2,3}$/;
+const userNamePattern = /^[0-9a-zA-Z]{3}@[0-9a-zA-Z]{3}\.[0-9a-zA-Z]{2,3}/;
 // regex patterns for password
 // password pattern: minimum 1 lowercase, 1 uppercase, 1 number, 1 special character and minimum 8 characters
 const lowerCaseLetters = /[a-z]/;
@@ -26,51 +26,50 @@ function checkForm() {
   }
 }
 
-
 // Check password for lowercase, uppercase, number and length
 function checkPassword() {
   const password = document.getElementById("password").value;
 
   // check for lowercase
   if (password.match(lowerCaseLetters)) {
-    passwordStrength[0] = 1;
+    passwordStrength[0] = true;
   } else {
-    passwordStrength[0] = 0;
+    passwordStrength[0] = false;
   }
 
   // check for uppercase
   if (password.match(upperCaseLetters)) {
-    passwordStrength[1] = 1;
+    passwordStrength[1] = true;
   } else {
-    passwordStrength[1] = 0;
+    passwordStrength[1] = false;
   }
 
   // check for number
   if (password.match(numbers)) {
-    passwordStrength[2] = 1;
+    passwordStrength[2] = true;
   } else {
-    passwordStrength[2] = 0;
+    passwordStrength[2] = false;
   }
 
   // check for special character
   if (password.match(specialChars)) {
-    passwordStrength[3] = 1;
+    passwordStrength[3] = true;
   } else {
-    passwordStrength[3] = 0;
+    passwordStrength[3] = false;
   }
 
   // check for length
   if (password.length >= 12) {
-    passwordStrength[4] = 1;
+    passwordStrength[4] = true;
   } else {
-    passwordStrength[4] = 0;
+    passwordStrength[4] = false;
   }
 }
 
 // Check passwordStrength an update the progressBar
 function showPasswordValidation() {
   let passwordValidationBar = document.getElementById(
-    "passwordValidationProgress"
+      "passwordValidationProgress"
   );
   let passwordStrengthText = document.getElementById("passwordStrengthText");
 
@@ -114,3 +113,38 @@ function showPasswordValidation() {
     passwordStrengthText.style.color = "red";
   }
 }
+
+function saveLoginData() {
+  //get username, password
+  const userName = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  //create loginData object
+  const loginData = {
+    username: userName,
+    password: password,
+  };
+
+  //convert loginData to JSON
+  jsonString = JSON.stringify(loginData);
+
+  //save loginData to localStorage
+  localStorage.setItem("loginData", jsonString);
+}
+
+function loadLoginData() {
+  //get loginData from localStorage
+  const jsonString = localStorage.getItem("loginData");
+
+  //convert JSON to loginData object
+  const loginData = JSON.parse(jsonString);
+
+  //get username and password from loginData
+  const userName = loginData.username;
+  const password = loginData.password;
+
+  //set username and password to form
+  document.getElementById("username").value = userName;
+  document.getElementById("password").value = password;
+}
+

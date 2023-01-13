@@ -12,15 +12,20 @@ body {
     background-color: white;
     height: 100%;
     width: 100%;
-
 }
 
 .login-border{
     background-color: white;
+    width: 120%;
     padding: 40px;
+    padding-left: 80px;
     border-radius: 8%;
 }
 
 progress::-moz-progress-bar {
     background-color: green !important;
+}
+
+ul {
+    font-family: "HelveticaNeueLT Com 55 Roman";
 }

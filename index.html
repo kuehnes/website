@@ -6,7 +6,6 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="css/styles.css" type="text/css" rel="stylesheet">
-  <link href="start.html" type="text/css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="./script.js"></script>
   <title>Login</title>
@@ -15,9 +14,12 @@
     <main>
       <div class="login-border">
       <div class="login-style">
+
+        <h1>L O G I N</h1>
       <form action="start.html">
-        <label for="uname">Benutzername</label>
-        <br/><br/>
+        <label for="username">Benutzername</label>
+        <br><br>
+
         <input
           oninput="checkForm()"
           type="text"
@@ -26,10 +28,10 @@
           id="username"
           required
         />
-        <br/><br/>
+        <br><br>
 
-        <label for="psw">Passwort</label>
-        <br/><br/>
+        <label for="password">Passwort</label>
+        <br><br>
 
         <input
           oninput="checkForm(), checkPassword(),  showPasswordValidation();"
@@ -39,18 +41,22 @@
           id="password"
           required
         />
-        <br /><br />
+        <br><br>
+
       <ul>
         <li>Klein- und Grossbuchstaben</li>
         <li>Nummer (0-9)</li>
         <li>Sonderzeichen (`!@#$£%*^&+)</li>
         <li>mind. 8 Zeichen</li>
       </ul>
+
         <button id="loginButton" disabled type="submit">Einloggen</button>
       </form>
-      <br /><br />
+      <br><br>
+
       Stärke <b><span style="color: red" id="passwordStrengthText">schlecht</span></b>
       <br> <br>
+
       <progress id="passwordValidationProgress" value="0" max="100"></progress>
       </div>
       </div>

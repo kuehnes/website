@@ -1,10 +1,7 @@
 body {
-    margin: 0;
     padding: 0;
-    font-family: Impact;
-    margin-left: 42%;
-    margin-right: 40%;
-    margin-top: 10%;
+    font-family: "Impact";
+    margin: 80px 600px 0;
     background-color: #C5DFFD;
 }
 
@@ -17,15 +14,34 @@ body {
 .login-border{
     background-color: white;
     width: 120%;
-    padding: 40px;
-    padding-left: 80px;
+    padding: 40px 40px 40px 50px;
     border-radius: 8%;
 }
 
+p {
+    background-color: white;
+    font-size: 30px;
+    padding: 15px;
+}
+
+.p-center {
+    display: flex;
+    align-items: center;
+    width: 20%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
 progress::-moz-progress-bar {
+    border: 0;
+    height: 20px;
+    border-radius: 2px;
     background-color: green !important;
 }
 
 ul {
-    font-family: "HelveticaNeueLT Com 55 Roman";
+    font-family: "Verdana";
+    font-size: 12px;
 }

@@ -7,17 +7,14 @@ const lowerCaseLetters = /[a-z]/;
 const upperCaseLetters = /[A-Z]/;
 const numbers = /[0-9]/;
 const specialChars = /[`!@#$£%^&*()_+\-=\[\]{};':"\\|,.<>\/?~äöü]/;
-
 // passwordStrength
 const passwordStrength = [0, 0, 0, 0, 0];
-
 // Check form for valid username and password
 function checkForm() {
   // get username, password and loginbutton from form
   const userName = document.getElementById("username").value;
   const password = document.getElementById("password").value;
   let loginButton = document.getElementById("loginButton");
-
   // if username and password are valid, enable login button else disable it
   if (userName.match(userNamePattern) && password.length >= 8) {
     loginButton.disabled = false;
@@ -25,39 +22,33 @@ function checkForm() {
     loginButton.disabled = true;
   }
 }
-
 // Check password for lowercase, uppercase, number and length
 function checkPassword() {
   const password = document.getElementById("password").value;
-
   // check for lowercase
   if (password.match(lowerCaseLetters)) {
     passwordStrength[0] = true;
   } else {
     passwordStrength[0] = false;
   }
-
   // check for uppercase
   if (password.match(upperCaseLetters)) {
     passwordStrength[1] = true;
   } else {
     passwordStrength[1] = false;
   }
-
   // check for number
   if (password.match(numbers)) {
     passwordStrength[2] = true;
   } else {
     passwordStrength[2] = false;
   }
-
   // check for special character
   if (password.match(specialChars)) {
     passwordStrength[3] = true;
   } else {
     passwordStrength[3] = false;
   }
-
   // check for length
   if (password.length >= 12) {
     passwordStrength[4] = true;
@@ -65,22 +56,18 @@ function checkPassword() {
     passwordStrength[4] = false;
   }
 }
-
 // Check passwordStrength an update the progressBar
 function showPasswordValidation() {
   let passwordValidationBar = document.getElementById(
       "passwordValidationProgress"
   );
   let passwordStrengthText = document.getElementById("passwordStrengthText");
-
   let passwordStrengthCount = 0;
-
   for (let i = 0; i < passwordStrength.length; i++) {
     if (passwordStrength[i]) {
       passwordStrengthCount++;
     }
   }
-
   if (passwordStrengthCount == 1) {
     passwordValidationBar.value = 20;
     passwordValidationBar.style.accentColor = "red";
@@ -113,38 +100,35 @@ function showPasswordValidation() {
     passwordStrengthText.style.color = "red";
   }
 }
-
 function saveLoginData() {
   //get username, password
   const userName = document.getElementById("username").value;
   const password = document.getElementById("password").value;
-
   //create loginData object
   const loginData = {
     username: userName,
     password: password,
   };
-
+  console.log(loginData);
   //convert loginData to JSON
-  jsonString = JSON.stringify(loginData);
-
+  const jsonString = JSON.stringify(loginData);
   //save loginData to localStorage
   localStorage.setItem("loginData", jsonString);
 }
-
 function loadLoginData() {
   //get loginData from localStorage
   const jsonString = localStorage.getItem("loginData");
-
   //convert JSON to loginData object
   const loginData = JSON.parse(jsonString);
-
+  console.log(loginData);
   //get username and password from loginData
   const userName = loginData.username;
   const password = loginData.password;
-
   //set username and password to form
   document.getElementById("username").value = userName;
   document.getElementById("password").value = password;
+  // update passwordValidation and loginButton
+  checkForm();
+  checkPassword();
+  showPasswordValidation();
 }
-
